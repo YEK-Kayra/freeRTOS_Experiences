@@ -1,0 +1,10 @@
+01:04:34 **** Incremental Build of configuration Debug for project 001_freeRTOS_FirstSight ****
+make -j8 all 
+arm-none-eabi-size  001_freeRTOS_FirstSight.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4756	     12	   1572	   6340	   18c4	001_freeRTOS_FirstSight.elf
+Finished building: default.size.stdout
+ 
+
+01:04:35 Build Finished. 0 errors, 0 warnings. (took 189ms)
+
