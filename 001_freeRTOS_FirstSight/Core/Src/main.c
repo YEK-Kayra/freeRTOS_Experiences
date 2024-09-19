@@ -22,6 +22,9 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
+#include "FreeRTOS.h"	/*! for using freeRTOS*/
+#include "task.h"		/*! for creating task*/
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -49,7 +52,8 @@
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 /* USER CODE BEGIN PFP */
-
+static void task1_handler(void *pvParam);
+static void task2_handler(void *pvParam);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -65,6 +69,20 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
+
+
+	/*! Used to pass a handle to the created task out of the xTaskCreate() function.
+	 * pxCreatedTask is optional and can be set to NULL.
+	 */
+	TaskHandle_t task1_handle = NULL;
+	TaskHandle_t task2_handle = NULL;
+
+
+	/*! If the task was created successfully then pdPASS is returned.
+	 * Otherwise errCOULD_NOT_ALLOCATE_REQUIRED_MEMORY is returned.
+	 */
+	BaseType_t status_Task;
+
 
   /* USER CODE END 1 */
 
@@ -87,6 +105,28 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
+
+  status_Task =  xTaskCreate(task1_handler, //pxTaskCode, Pointer to the task entry function (just the name of the function that implements the task)
+		  	  	  "Task-1", 				 //pcName
+				  200, 						 //usStackDepth	(200*word)
+				  "Hello world form Task-1", //pvParameters(pointer to variable's parameter :)
+				  2, 						 //uxPriority
+				  &task1_handle); 			 //pxCreatedTask, Used to pass a handle to the created task out of the xTaskCreate() function, is optional and can be set to NULL.
+
+  configASSERT(status_Task == pdPASS);		 //pdPASS is equal 1 as decimal
+
+
+  status_Task =  xTaskCreate(task2_handler,
+		  	  	  "Task-1",
+				  200,
+				  "Hello world form Task-2",
+				  2,
+				  &task2_handle);
+
+  configASSERT(status_Task == pdPASS);
+
+
+
 
   /* USER CODE END 2 */
 
@@ -161,8 +201,35 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+static void task1_handler(void *pvParam){
 
+}
+
+static void task2_handler(void *pvParam){
+
+}
 /* USER CODE END 4 */
+
+/**
+  * @brief  Period elapsed callback in non blocking mode
+  * @note   This function is called  when TIM6 interrupt took place, inside
+  * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
+  * a global variable "uwTick" used as application time base.
+  * @param  htim : TIM handle
+  * @retval None
+  */
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+  /* USER CODE BEGIN Callback 0 */
+
+  /* USER CODE END Callback 0 */
+  if (htim->Instance == TIM6) {
+    HAL_IncTick();
+  }
+  /* USER CODE BEGIN Callback 1 */
+
+  /* USER CODE END Callback 1 */
+}
 
 /**
   * @brief  This function is executed in case of error occurrence.
