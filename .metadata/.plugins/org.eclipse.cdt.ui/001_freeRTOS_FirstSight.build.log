@@ -1,4 +1,4 @@
-01:07:25 **** Incremental Build of configuration Debug for project 001_freeRTOS_FirstSight ****
+18:37:24 **** Incremental Build of configuration Debug for project 001_freeRTOS_FirstSight ****
 make -j8 all 
 arm-none-eabi-gcc "../ThirdParty/freeRTOS/portable/MemMang/heap_4.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F407xx -c -I../Core/Inc -I"C:/Users/yunus/STM32CubeIDE/freeRTOS_Experiences/001_freeRTOS_FirstSight/ThirdParty/freeRTOS" -I"C:/Users/yunus/STM32CubeIDE/freeRTOS_Experiences/001_freeRTOS_FirstSight/ThirdParty/freeRTOS/include" -I"C:/Users/yunus/STM32CubeIDE/freeRTOS_Experiences/001_freeRTOS_FirstSight/ThirdParty/freeRTOS/portable/GCC/ARM_CM4F" -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"ThirdParty/freeRTOS/portable/MemMang/heap_4.d" -MT"ThirdParty/freeRTOS/portable/MemMang/heap_4.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "ThirdParty/freeRTOS/portable/MemMang/heap_4.o"
 arm-none-eabi-gcc "../ThirdParty/freeRTOS/portable/GCC/ARM_CM4F/port.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F407xx -c -I../Core/Inc -I"C:/Users/yunus/STM32CubeIDE/freeRTOS_Experiences/001_freeRTOS_FirstSight/ThirdParty/freeRTOS" -I"C:/Users/yunus/STM32CubeIDE/freeRTOS_Experiences/001_freeRTOS_FirstSight/ThirdParty/freeRTOS/include" -I"C:/Users/yunus/STM32CubeIDE/freeRTOS_Experiences/001_freeRTOS_FirstSight/ThirdParty/freeRTOS/portable/GCC/ARM_CM4F" -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"ThirdParty/freeRTOS/portable/GCC/ARM_CM4F/port.d" -MT"ThirdParty/freeRTOS/portable/GCC/ARM_CM4F/port.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "ThirdParty/freeRTOS/portable/GCC/ARM_CM4F/port.o"
@@ -16,11 +16,11 @@ Finished building target: 001_freeRTOS_FirstSight.elf
 arm-none-eabi-size  001_freeRTOS_FirstSight.elf 
 arm-none-eabi-objdump -h -S 001_freeRTOS_FirstSight.elf  > "001_freeRTOS_FirstSight.list"
    text	   data	    bss	    dec	    hex	filename
-  10280	     16	  78728	  89024	  15bc0	001_freeRTOS_FirstSight.elf
+  19120	    112	  79200	  98432	  18080	001_freeRTOS_FirstSight.elf
 Finished building: default.size.stdout
  
 Finished building: 001_freeRTOS_FirstSight.list
  
 
-01:07:27 Build Finished. 0 errors, 0 warnings. (took 1s.419ms)
+18:37:25 Build Finished. 0 errors, 0 warnings. (took 1s.320ms)
 

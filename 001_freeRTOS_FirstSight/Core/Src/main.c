@@ -21,7 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <stdio.h>
 #include "FreeRTOS.h"	/*! for using freeRTOS*/
 #include "task.h"		/*! for creating task*/
 
@@ -52,8 +52,11 @@
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 /* USER CODE BEGIN PFP */
+
+/*! Task functions of freeRTOS prototypes */
 static void task1_handler(void *pvParam);
 static void task2_handler(void *pvParam);
+
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -109,7 +112,7 @@ int main(void)
   status_Task =  xTaskCreate(task1_handler, //pxTaskCode, Pointer to the task entry function (just the name of the function that implements the task)
 		  	  	  "Task-1", 				 //pcName
 				  200, 						 //usStackDepth	(200*word)
-				  "Hello world form Task-1", //pvParameters(pointer to variable's parameter :)
+				  "Hello world from Task-1", //pvParameters(pointer to variable's parameter :)
 				  2, 						 //uxPriority
 				  &task1_handle); 			 //pxCreatedTask, Used to pass a handle to the created task out of the xTaskCreate() function, is optional and can be set to NULL.
 
@@ -119,11 +122,15 @@ int main(void)
   status_Task =  xTaskCreate(task2_handler,
 		  	  	  "Task-1",
 				  200,
-				  "Hello world form Task-2",
+				  "Hello world from Task-2",
 				  2,
 				  &task2_handle);
 
   configASSERT(status_Task == pdPASS);
+
+
+  vTaskStartScheduler(); //Start freeRTOS scheduler, now we implement our code into our taskx_handler functions
+
 
 
 
@@ -203,9 +210,20 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 static void task1_handler(void *pvParam){
 
+	while(1){
+		printf("%s\n", (char*)pvParam);
+		taskYIELD();
+	}
+
 }
 
+
 static void task2_handler(void *pvParam){
+
+	while(1){
+		printf("%s\n", (char*)pvParam);
+		taskYIELD();
+	}
 
 }
 /* USER CODE END 4 */
