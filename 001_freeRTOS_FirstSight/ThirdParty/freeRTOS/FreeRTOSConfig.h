@@ -55,7 +55,7 @@
 #define configUSE_TICK_HOOK				0 //1 ==> swtich
 #define configCPU_CLOCK_HZ				( SystemCoreClock )
 #define configTICK_RATE_HZ				( ( TickType_t ) 1000 ) //1000 Hz is equal to 1 millisecond, so the baseline of all graphs will be divided into 1-millisecond intervals.
-#define configMAX_PRIORITIES			( 5 ) // Give priority from 0 to 4 ==> 0 1 2 3 4 do not write 5!( 0 is more urgencier than 1), if you increase it , system performance will be decreased
+#define configMAX_PRIORITIES			( 5 ) // Give priority from 0 to 4 ==> 0 1 2 3 4 do not write 5!(ex. 3 is more urgencier than 2), if you increase it , system performance will be decreased
 #define configMINIMAL_STACK_SIZE		( ( unsigned short ) 130 )
 #define configTOTAL_HEAP_SIZE			( ( size_t ) ( 75 * 1024 ) )//75kByte total heap size, you can increase and decrease, write 130 and will be got error because of overflow memory
 #define configMAX_TASK_NAME_LEN			( 10 )
