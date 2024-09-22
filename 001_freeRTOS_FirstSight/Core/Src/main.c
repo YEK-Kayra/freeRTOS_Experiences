@@ -53,7 +53,7 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 /* USER CODE BEGIN PFP */
 
-/*! Task functions of freeRTOS prototypes */
+/*! Task prototypes functions of freeRTOS */
 static void task1_handler(void *pvParam);
 static void task2_handler(void *pvParam);
 
